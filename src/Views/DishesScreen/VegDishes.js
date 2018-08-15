@@ -5,17 +5,17 @@ const cards = [
     {
       text: 'Card One',
       name: 'One',
-      image: require('../img/Veg/veg1.jpg')
+      image: require('../../img/Veg/veg1.jpg')
     },
     {
         text: 'Card Two',
         name: 'Two',
-        image: require('../img/Veg/veg2.jpg')
+        image: require('../../img/Veg/veg2.jpg')
     },
     {
         text: 'Card Three',
         name: 'Three',
-        image: require('../img/Veg/veg3.jpg')
+        image: require('../../img/Veg/veg3.jpg')
     }
 ];
 export default class VegDishes extends React.Component {

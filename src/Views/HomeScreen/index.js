@@ -23,6 +23,9 @@ const HomeScreenRouter = DrawerNavigator(
     Account: { screen: MyAccount}
   },
   {
+    initialRouteName: 'Account'
+  },
+  {
     contentComponent: props => <SideBar {...props} />
   }
 );

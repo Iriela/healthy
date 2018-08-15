@@ -5,17 +5,17 @@ const cards = [
     {
       text: 'Card One',
       name: 'One',
-      image: require('../img/Seafood/Seafood1.jpg')
+      image: require('../../img/Seafood/Seafood1.jpg')
     },
     {
         text: 'Card Two',
         name: 'Two',
-        image: require('../img/Seafood/Seafood2.jpg')
+        image: require('../../img/Seafood/Seafood2.jpg')
     },
     {
         text: 'Card Three',
         name: 'Three',
-        image: require('../img/Seafood/Seafood3.jpg')
+        image: require('../../img/Seafood/Seafood3.jpg')
     }
 ];
 export default class SeaFoodDishes extends React.Component {
