@@ -19,6 +19,9 @@ const cards = [
     }
 ];
 export default class NonVegDishes extends React.Component {
+    static navigationOptions = {
+        gesturesEnabled: false
+    }
     render() {
         return (
         <Container>
