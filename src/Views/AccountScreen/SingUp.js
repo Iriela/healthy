@@ -5,7 +5,12 @@ import {
   Content,
   Button,
   Text,
-  View
+  View,
+  Header,
+  Left,
+  Body,
+  Right,
+  Title
 } from 'native-base';
 //import firebase from 'react-native-firebase'
 import { StyleSheet } from "react-native"
@@ -27,6 +32,20 @@ export default class SingUp extends Component {
   render() {
     return (
       <Container>
+        <Header>
+          <Left>
+            <Button
+              transparent
+              onPress={() => this.props.navigation.navigate("DrawerOpen")}
+            >
+              <Icon name="menu" />
+            </Button>
+          </Left>
+          <Body>
+            <Title>Login</Title>
+          </Body>
+          <Right />
+        </Header>
         <Content padder>
           <View style={styles.container}>
             <Text>Sign Up</Text>

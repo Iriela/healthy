@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { TextInput } from 'react-native'
-import { 
-  Container, 
+import {
+  Container,
   Content,
-  Button, 
+  Button,
   Text,
-  View 
+  View
 } from 'native-base';
 //import firebase from 'react-native-firebase'
 import { StyleSheet } from "react-native"
@@ -19,10 +19,24 @@ export default class Login extends Component {
       .then(() => this.props.navigation.navigate('Home'))
       .catch(error => this.setState({ errorMessage: error.message }))
   }*/
-  
+
   render() {
     return (
       <Container>
+        <Header>
+          <Left>
+            <Button
+              transparent
+              onPress={() => this.props.navigation.navigate("DrawerOpen")}
+            >
+              <Icon name="menu" />
+            </Button>
+          </Left>
+          <Body>
+            <Title>Non Veg Dishes</Title>
+          </Body>
+          <Right />
+        </Header>
         <Content padder>
           <View style={styles.container}>
             <Text>Login</Text>
@@ -45,9 +59,9 @@ export default class Login extends Component {
               onChangeText={password => this.setState({ password })}
               value={this.state.password}
             />
-            <Button title="Login"/>
+            <Button title="Login" />
           </View>
-          <Text>New to Healthy? <Text onPress={() => this.props.navigation.navigate("SingUp") } style={{color:"blue", textDecorationLine: "underline"}}>Create an account</Text></Text>
+          <Text>New to Healthy? <Text onPress={() => this.props.navigation.navigate("SingUp")} style={{ color: "blue", textDecorationLine: "underline" }}>Create an account</Text></Text>
         </Content>
       </Container>
     );
