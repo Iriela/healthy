@@ -7,11 +7,11 @@ const firebaseConfig = {
   storageBucket: "healthy-512eb.appspot.com"
 };
 
-firebase.initializeApp(firebaseConfig);
+//firebase.initializeApp(firebaseConfig);
 
 export default firebaseConfig;
 
-export const database = firebase.database();
-export const auth = firebase.auth();
-export const storage = firebase.storage();
-export const refValue = database.ref('/Value');
+//export const database = firebase.database();
+//export const auth = firebase.auth();
+//export const storage = firebase.storage();
+//export const refValue = database.ref('/Value');

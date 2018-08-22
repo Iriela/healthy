@@ -5,12 +5,16 @@ import {
   Container,
   List,
   ListItem,
-  Content,
-  Button,
-  Icon
+  Content
 } from "native-base";
-const routes = ["Home"];
+let routes = ["Home","Account"];
 export default class SideBar extends React.Component {
+  componentDidMount(){
+    if(this.state && this.state.email){
+      routes.push("Logout");
+    }
+  }
+  
   render() {
     return (
       <Container>

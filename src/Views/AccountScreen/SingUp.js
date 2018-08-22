@@ -10,9 +10,10 @@ import {
   Left,
   Body,
   Right,
-  Title
+  Title,
+  Icon
 } from 'native-base';
-//import firebase from 'react-native-firebase'
+import firebase from 'firebase'
 import { StyleSheet } from "react-native"
 export default class SingUp extends Component {
   state =
@@ -21,13 +22,13 @@ export default class SingUp extends Component {
       password: '',
       errorMessage: null
     }
-  /*handleSignUp = () => {
+  handleSignUp = () => {
     firebase
       .auth()
       .createUserWithEmailAndPassword(this.state.email, this.state.password)
       .then(() => this.props.navigation.navigate('Home'))
       .catch(error => this.setState({ errorMessage: error.message }))
-  }*/
+  }
 
   render() {
     return (
@@ -42,38 +43,43 @@ export default class SingUp extends Component {
             </Button>
           </Left>
           <Body>
-            <Title>Login</Title>
+            <Title>Sign Up</Title>
           </Body>
           <Right />
         </Header>
         <Content padder>
-          <View style={styles.container}>
-            <Text>Sign Up</Text>
-            {this.state.errorMessage &&
+          <Form>
+            {
+              this.state.errorMessage &&
               <Text style={{ color: 'red' }}>
                 {this.state.errorMessage}
-              </Text>}
-            <TextInput
-              placeholder="Email"
-              autoCapitalize="none"
-              style={styles.textInput}
-              onChangeText={email => this.setState({ email })}
-              value={this.state.email}
-            />
-            <TextInput
-              secureTextEntry
-              placeholder="Password"
-              autoCapitalize="none"
-              style={styles.textInput}
-              onChangeText={password => this.setState({ password })}
-              value={this.state.password}
-            />
-            <Button title="Sign Up" />
-            <Button
-              title="Already have an account? Login"
-              onPress={() => this.props.navigation.navigate('Login')}
-            />
-          </View>
+              </Text>
+            }
+            <Item inlineLabel>
+              <Label>
+                Email
+              </Label>
+              <Input
+                autoCapitalize="none"
+                onChangeText={email => this.setState({ email })}
+                value={this.state.email}
+              />
+            </Item>
+            <Item inlineLabel>
+              <Label>
+                Password
+              </Label>
+              <Input
+                secureTextEntry
+                autoCapitalize="none"
+                onChangeText={password => this.setState({ password })}
+                value={this.state.password}
+              />
+            </Item>
+            <Button onPress={this.handleSignUp}>
+              <Text>Sign Up</Text> 
+            </Button>
+          </Form>
           <Text>Already a member? <Text onPress={() => this.props.navigation.navigate("Login")} style={{ color: "blue", textDecorationLine: "underline" }}>Log in</Text></Text>
         </Content>
       </Container>

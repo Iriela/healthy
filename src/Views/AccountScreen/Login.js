@@ -5,20 +5,29 @@ import {
   Content,
   Button,
   Text,
-  View
+  Header,
+  Left,
+  Body,
+  Title,
+  Right,
+  Label,
+  Form,
+  Item,
+  Input,
+  Icon
 } from 'native-base';
-//import firebase from 'react-native-firebase'
+import firebase from 'firebase'
 import { StyleSheet } from "react-native"
 export default class Login extends Component {
   state = { email: '', password: '', errorMessage: null }
-  /*handleLogin = () => {
-    const { email, pasword } = this.state
+  handleLogin = () => {
+    const { email, password } = this.state
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
       .then(() => this.props.navigation.navigate('Home'))
       .catch(error => this.setState({ errorMessage: error.message }))
-  }*/
+  }
 
   render() {
     return (
@@ -33,34 +42,44 @@ export default class Login extends Component {
             </Button>
           </Left>
           <Body>
-            <Title>Non Veg Dishes</Title>
+            <Title>Login</Title>
           </Body>
           <Right />
         </Header>
         <Content padder>
-          <View style={styles.container}>
-            <Text>Login</Text>
-            {this.state.errorMessage &&
+          <Form>
+            {
+              this.state.errorMessage &&
               <Text style={{ color: 'red' }}>
                 {this.state.errorMessage}
-              </Text>}
-            <TextInput
-              style={styles.textInput}
-              autoCapitalize="none"
-              placeholder="Email"
-              onChangeText={email => this.setState({ email })}
-              value={this.state.email}
-            />
-            <TextInput
-              secureTextEntry
-              style={styles.textInput}
-              autoCapitalize="none"
-              placeholder="Password"
-              onChangeText={password => this.setState({ password })}
-              value={this.state.password}
-            />
-            <Button title="Login" />
-          </View>
+              </Text>
+            }
+            <Item inlineLabel>
+              <Label>
+                Email
+              </Label>
+              <Input
+                autoCapitalize="none"
+                placeholder=""
+                onChangeText={email => this.setState({ email })}
+                value={this.state.email}
+              />
+            </Item>
+            <Item inlineLabel>
+              <Label>
+                Password
+              </Label>
+              <Input
+                secureTextEntry
+                autoCapitalize="none"
+                onChangeText={password => this.setState({ password })}
+                value={this.state.password}
+              />
+            </Item>
+            <Button onPress={this.handleLogin}>
+              <Text>Login</Text>
+            </Button>
+          </Form>
           <Text>New to Healthy? <Text onPress={() => this.props.navigation.navigate("SingUp")} style={{ color: "blue", textDecorationLine: "underline" }}>Create an account</Text></Text>
         </Content>
       </Container>

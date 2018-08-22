@@ -1,5 +1,5 @@
 import React from "react";
-//import { StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 import {
   Button,
   Text,
@@ -13,9 +13,8 @@ import {
   Right,
   View
 } from "native-base";
-//import { auth, database, provider, refValue } from '../../Config/app_config.js';
-import { getCurrentValue, incrementValue } from '../../Services/firebase_services';
-//import firebase from 'react-native-firebase'
+//import { getCurrentValue, incrementValue } from '../../Services/firebase_services';
+import firebase from 'firebase'
 
 export default class HomeScreen extends React.Component {
   state = { currentUser: null }
@@ -30,10 +29,10 @@ export default class HomeScreen extends React.Component {
     this.setValue = this.setValue.bind(this);
   }
 
-  /*componentDidMount() {
+  componentDidMount() {
     const { currentUser } = firebase.auth()
     this.setState({ currentUser })
-  }*/
+  }
   /*componentDidMount() {
     var closure = this;
     console.log("Component did mount");
@@ -57,10 +56,11 @@ export default class HomeScreen extends React.Component {
 
   addQuantity = () =>{
     //console.log(this.state.valera);
-    incrementValue(this.state.valera);
+    //incrementValue(this.state.valera);
   }
 
   render() {
+    const { currentUser } = this.state
     return (
       <Container>
         <Header>
@@ -78,9 +78,9 @@ export default class HomeScreen extends React.Component {
           <Right />
         </Header>
         <Content padder>
-          <View /*style={styles.container}*/>
+          <View style={styles.container}>
             <Text>
-              Hi
+              Hi {currentUser && currentUser.email}!
             </Text>
           </View>
         </Content>
@@ -89,10 +89,10 @@ export default class HomeScreen extends React.Component {
   }
 }
 
-/*const styles = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center'
   }
-})*/
+})
