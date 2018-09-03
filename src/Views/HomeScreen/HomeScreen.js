@@ -14,49 +14,18 @@ import {
   View
 } from "native-base";
 //import { getCurrentValue, incrementValue } from '../../Services/firebase_services';
-import firebase from 'firebase'
+import firebase from '../../Config/app_config'
 
 export default class HomeScreen extends React.Component {
   state = { currentUser: null }
 
   constructor(props) {
     super(props);
-
-    this.state = {
-      valera: 5
-    };
-
-    this.setValue = this.setValue.bind(this);
   }
 
   componentDidMount() {
     const { currentUser } = firebase.auth()
     this.setState({ currentUser })
-  }
-  /*componentDidMount() {
-    var closure = this;
-    console.log("Component did mount");
-    //let valera = {...this.state.valera}
-    //let ret = 0;
-    refValue.on("value", function(snapshot){
-      console.log('makato', snapshot.child('Value').val());
-      let a = snapshot.child('Value').val();
-      closure.setValue(a);
-    });
-
-    //this.setState({valera: ret});
-  }*/
-
-  setValue = (value) => {
-    console.log('eeeooo', value);
-    this.setState({
-      valera: value
-    });
-  }
-
-  addQuantity = () =>{
-    //console.log(this.state.valera);
-    //incrementValue(this.state.valera);
   }
 
   render() {
@@ -78,21 +47,27 @@ export default class HomeScreen extends React.Component {
           <Right />
         </Header>
         <Content padder>
-          <View style={styles.container}>
+          <View>
             <Text>
               Hi {currentUser && currentUser.email}!
             </Text>
+
+            <Button
+              transparent
+              onPress={() => this.props.navigation.navigate("MyProgram")}
+            >
+              <Text>Access to My Program</Text>
+            </Button>
+
+            <Button
+              transparent
+              onPress={() => this.props.navigation.navigate("FitScreen")}
+            >
+              <Text>Access Fitness Screen</Text>
+            </Button>
           </View>
         </Content>
       </Container>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  }
-})

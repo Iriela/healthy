@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import Login from "./Login.js";
 import SingUp from "./SingUp.js";
-import { StackNavigator } from "react-navigation";
+import { createStackNavigator } from "react-navigation";
 import Loading from "./Loading.js";
-export default (Account = StackNavigator(
+export default (Account = createStackNavigator(
     {
       Login: { screen: props => <Login {...props}/> },
       SingUp: { screen: props => <SingUp {...props}/> },

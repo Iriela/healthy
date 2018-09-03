@@ -1,8 +1,5 @@
-import React, { Component } from "react";
-import { View } from "react-native";
-import { Container, Content, Picker, Button, Text } from "native-base";
+import React from 'react';
 import Expo from "expo";
-
 import HomeScreen from "./src/Views/HomeScreen/index.js";
 
 export default class App extends React.Component {

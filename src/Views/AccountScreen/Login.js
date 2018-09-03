@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { TextInput } from 'react-native'
 import {
   Container,
   Content,
@@ -16,7 +15,7 @@ import {
   Input,
   Icon
 } from 'native-base';
-import firebase from 'firebase'
+import firebase from '../../Config/app_config'
 import { StyleSheet } from "react-native"
 export default class Login extends Component {
   state = { email: '', password: '', errorMessage: null }
@@ -25,7 +24,10 @@ export default class Login extends Component {
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
-      .then(() => this.props.navigation.navigate('Home'))
+      .then(() => {
+        //do stuff to modify sidebar
+        this.props.navigation.navigate('Home');
+      })
       .catch(error => this.setState({ errorMessage: error.message }))
   }
 
@@ -86,17 +88,3 @@ export default class Login extends Component {
     );
   }
 }
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  textInput: {
-    height: 40,
-    width: '90%',
-    borderColor: 'gray',
-    borderWidth: 1,
-    marginTop: 8
-  }
-})

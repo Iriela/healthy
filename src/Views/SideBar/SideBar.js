@@ -1,25 +1,19 @@
 import React from "react";
-import { Image } from "react-native";
+import { ScrollView, Image } from "react-native";
 import {
   Text,
   Container,
   List,
   ListItem,
-  Content
+  Content,
+  View
 } from "native-base";
-let routes = ["Home","Account"];
-export default class SideBar extends React.Component {
-  componentDidMount(){
-    if(this.state && this.state.email){
-      routes.push("Logout");
-    }
-  }
-  
-  render() {
-    return (
-      <Container>
-        <Content>
-          <Image
+import { DrawerItems, SafeAreaView } from "react-navigation";
+
+const SideBar = (props) => (
+  <ScrollView>
+    <SafeAreaView forceInset={{ top: 'always', horizontal: 'never' }}>
+    <Image
             source={{
               uri:
                 "https://raw.githubusercontent.com/GeekyAnts/NativeBase-KitchenSink/master/assets/drawer-cover.png"
@@ -45,22 +39,16 @@ export default class SideBar extends React.Component {
                 "https://raw.githubusercontent.com/GeekyAnts/NativeBase-KitchenSink/master/assets/logo.png"
             }}
           />
-          <List
-            dataArray={routes}
-            contentContainerStyle={{ marginTop: 250 }}
-            renderRow={data => {
-              return (
-                <ListItem
-                  button
-                  onPress={() => this.props.navigation.navigate(data)}
-                >
-                  <Text>{data}</Text>
-                </ListItem>
-              );
-            }}
-          />
-        </Content>
-      </Container>
-    );
-  }
-}
+      <View 
+        style={{
+          marginTop: 100
+        }}>
+      <DrawerItems
+       {...props} 
+      />
+      </View>
+    </SafeAreaView>
+  </ScrollView>
+);
+
+export default SideBar;

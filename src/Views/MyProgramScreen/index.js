@@ -26,7 +26,7 @@ export default class MyProgram extends Component {
                         onPress={() => this.props.navigation.navigate("Challenge")}
                     >
                         <Left>
-                            <Button style={{ backgroundColor: "#FF9501" }}>
+                            <Button>
                                 <Icon active name="trophy" />
                             </Button>
                         </Left>

@@ -13,7 +13,7 @@ import {
   Title,
   Icon
 } from 'native-base';
-import firebase from 'firebase'
+import firebase from '../../Config/app_config'
 import { StyleSheet } from "react-native"
 export default class SingUp extends Component {
   state =
@@ -86,17 +86,3 @@ export default class SingUp extends Component {
     );
   }
 }
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  textInput: {
-    height: 40,
-    width: '90%',
-    borderColor: 'gray',
-    borderWidth: 1,
-    marginTop: 8
-  }
-})
